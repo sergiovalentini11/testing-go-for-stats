@@ -116,3 +116,13 @@ func Test_LinRegCoef_4(t *testing.T) {
 	}
 	
 }
+
+func Test_roundFloat (t *testing.T) {
+
+	got := roundFloat(1.234567, 4)
+	want := 1.2346
+
+	if got != want {
+		t.Error("Want 1.2346, got", got)
+	}
+}
