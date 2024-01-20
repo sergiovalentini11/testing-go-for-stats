@@ -6,26 +6,27 @@ import (
 	"math"
 )
 
+// found a helpful rounding function as it doesn't appear that exists in Go yet - credit: https://gosamples.dev/round-float/
+func roundFloat(val float64, precision uint) float64 {
+    ratio := math.Pow(10, float64(precision))
+    return math.Round(val*ratio) / ratio
+}
+
 func LinRegCoef(data []stats.Coordinate) float64 {
 // LinRegCoef takes in a Coordinate struct, which is a set of ordered pairs run through stats.LinReg.
 // Then it iterates through the ordered pairs to find 2 consecutive ordered pairs where x1 - x2 != 0,
-// and finally calculates and returns the linear regression coefficient. 
+// and finally calculates linear regression coefficient, rounds to 4 decimals using roundFloat, and returns it. 
 var coeff float64 = 0.0
 	for i := 0; i < 10; i++ {
 		if data[i].X - data[i+1].X == 0 {
 			continue
 		} else {
 			coeff = (data[i].Y - data[i+1].Y) / (data[i].X - data[i+1].X)
+			coeff = roundFloat(coeff, 4)
 			break
 		}
 	}
 	return coeff
-}
-
-// found a helpful rounding function as it doesn't appear that exists in Go yet - credit: https://gosamples.dev/round-float/
-func roundFloat(val float64, precision uint) float64 {
-    ratio := math.Pow(10, float64(precision))
-    return math.Round(val*ratio) / ratio
 }
 
 func main() {
@@ -95,21 +96,17 @@ func main() {
 		},
 	)
 
-	// running LinRegCoef to get the regression coefficients for each dataset, and printing them
+	// running LinRegCoef to get the regression coefficients for each dataset and printing them
 	r1_coeff := LinRegCoef(r1)
-	r1_coeff = roundFloat(r1_coeff, 4)
-	fmt.Println(r1_coeff)
+	fmt.Println("Regression coefficient 1 =", r1_coeff)
 
 	r2_coeff := LinRegCoef(r2)
-	r2_coeff = roundFloat(r2_coeff, 4)
-	fmt.Println(r2_coeff)
+	fmt.Println("Regression coefficient 2 =", r2_coeff)
 
 	r3_coeff := LinRegCoef(r3)
-	r3_coeff = roundFloat(r3_coeff, 4)
-	fmt.Println(r3_coeff)
+	fmt.Println("Regression coefficient 3 =", r3_coeff)
 
 	r4_coeff := LinRegCoef(r4)
-	r4_coeff = roundFloat(r4_coeff, 4)
-	fmt.Println(r4_coeff)
+	fmt.Println("Regression coefficient 4 =", r4_coeff)
 
 }
