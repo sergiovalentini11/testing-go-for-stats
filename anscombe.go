@@ -6,9 +6,23 @@ import (
 //	"gonum.org/v1/plot"
 )
 
+func LinRegCoef(data []stats.Coordinate) {
+
+	for i := 0; i < 10; i++ {
+		if data[i].X - data[i + 1].X == 0 {
+			continue
+		} else {
+			coeff := (data[i].Y - data[i + 1].Y) / (data[i].X - data[i + 1].X)
+			fmt.Println("")
+			fmt.Printf("Regression coefficient = %.4f", coeff)
+			fmt.Println("")
+				break
+		}
+	}
+}
+
 func main() {
 
-// Using LinReg to input the ordered pairs for each of the 4 linear regressions
 	r1, _ := stats.LinReg(
 		[]stats.Coordinate{
 		{10.0, 8.04},
@@ -72,12 +86,10 @@ func main() {
 		{8.0, 6.89},
 	},
 	)		
-	
-	// Printing the results each of the linear regressions to the console
-	fmt.Println(r1)
-	fmt.Println(r2)
-	fmt.Println(r3)
-	fmt.Println(r4)
- 
+
+	LinRegCoef(r1)
+	LinRegCoef(r2)
+	LinRegCoef(r3)
+	LinRegCoef(r4)
 
 }
