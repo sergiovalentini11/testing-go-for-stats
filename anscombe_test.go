@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// Function testing
+// ***** BEGIN LinRegCoef TESTING *****
 
 func Test_LinRegCoef_1(t *testing.T) {
 
@@ -119,6 +119,10 @@ func Test_LinRegCoef_4(t *testing.T) {
 	
 }
 
+// *** END LinRegCoef TESTING *****
+// ********************************
+// *** BEGIN roundFloat TESTING ***
+
 func Test_roundFloat (t *testing.T) {
 
 	got := roundFloat(1.234567, 4)
@@ -129,8 +133,10 @@ func Test_roundFloat (t *testing.T) {
 	}
 }
 
+// ****END FUNCTION TESTING**********
+// **********************************
+// ****BEGIN FUNCTION BENCHMARKING***
 
-// Function benchmarking
 
 func BenchmarkLinRegCoef_1(b *testing.B) {
 
@@ -176,5 +182,16 @@ func BenchmarkLinRegCoef_4(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
         LinRegCoef(benchmark4)
+    }
+}
+
+// ** END LinRegCoef BENCHMARKING ***
+// **********************************
+// ** BEGIN roundFloat BENCHMARKING *
+
+func BenchmarkRoundFloat(b *testing.B) {
+	num := 5.4637589
+	for i := 0; i < b.N; i++ {
+        roundFloat(num, 4)
     }
 }
