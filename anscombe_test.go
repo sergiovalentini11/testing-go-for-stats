@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+// Function testing
+
 func Test_LinRegCoef_1(t *testing.T) {
 
 	//Test 1 - on first dataset
@@ -125,4 +127,54 @@ func Test_roundFloat (t *testing.T) {
 	if got != want {
 		t.Error("Want 1.2346, got", got)
 	}
+}
+
+
+// Function benchmarking
+
+func BenchmarkLinRegCoef_1(b *testing.B) {
+
+	// Benchmarking LinRegCoef on dataset 1
+	benchmark1, _ := stats.LinReg(
+		[]stats.Coordinate{
+			{10.0, 8.04},
+			{8.0, 6.95},
+			{13.0, 7.58},
+			{9.0, 8.81},
+			{11.0, 8.33},
+			{14.0, 9.96},
+			{6.0, 7.24},
+			{4.0, 4.26},
+			{12.0, 10.84},
+			{7.0, 4.82},
+			{5.0, 5.68},
+		},
+	)
+	for i := 0; i < b.N; i++ {
+        LinRegCoef(benchmark1)
+    }
+}
+
+func BenchmarkLinRegCoef_4(b *testing.B) {
+
+	// Benchmarking LinRegCoef on dataset 4 (the only dataset that will need to use the loop section of LinRegCoef)
+	benchmark4, _ := stats.LinReg(
+		[]stats.Coordinate{
+			{8.0, 6.58},
+			{8.0, 5.76},
+			{8.0, 7.71},
+			{8.0, 8.84},
+			{8.0, 8.47},
+			{8.0, 7.04},
+			{8.0, 5.25},
+			{19.0, 12.5},
+			{8.0, 5.56},
+			{8.0, 7.91},
+			{8.0, 6.89},
+		},
+	)
+
+	for i := 0; i < b.N; i++ {
+        LinRegCoef(benchmark4)
+    }
 }
