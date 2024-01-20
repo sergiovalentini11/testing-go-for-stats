@@ -8,17 +8,17 @@ import (
 
 // found a helpful rounding function as it doesn't appear that exists in Go yet - credit: https://gosamples.dev/round-float/
 func roundFloat(val float64, precision uint) float64 {
-    ratio := math.Pow(10, float64(precision))
-    return math.Round(val*ratio) / ratio
+	ratio := math.Pow(10, float64(precision))
+	return math.Round(val*ratio) / ratio
 }
 
 func LinRegCoef(data []stats.Coordinate) float64 {
-// LinRegCoef takes in a Coordinate struct, which is a set of ordered pairs run through stats.LinReg.
-// Then it iterates through the ordered pairs to find 2 consecutive ordered pairs where x1 - x2 != 0,
-// and finally calculates linear regression coefficient, rounds to 4 decimals using roundFloat, and returns it. 
-var coeff float64 = 0.0
+	// LinRegCoef takes in a Coordinate struct, which is a set of ordered pairs run through stats.LinReg.
+	// Then it iterates through the ordered pairs to find 2 consecutive ordered pairs where x1 - x2 != 0,
+	// and finally calculates linear regression coefficient, rounds to 4 decimals using roundFloat, and returns it.
+	var coeff float64 = 0.0
 	for i := 0; i < 10; i++ {
-		if data[i].X - data[i+1].X == 0 {
+		if data[i].X-data[i+1].X == 0 {
 			continue
 		} else {
 			coeff = (data[i].Y - data[i+1].Y) / (data[i].X - data[i+1].X)
