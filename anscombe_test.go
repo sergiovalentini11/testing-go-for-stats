@@ -7,7 +7,7 @@ import (
 
 func Test_LinRegCoef_1(t *testing.T) {
 
-	//Test 1
+	//Test 1 - on first dataset
 	test1, _ := stats.LinReg(
 		[]stats.Coordinate{
 			{10.0, 8.04},
@@ -35,7 +35,7 @@ func Test_LinRegCoef_1(t *testing.T) {
 
 func Test_LinRegCoef_2(t *testing.T) {
 
-
+	//Test 2 - on second dataset
 	test2, _ := stats.LinReg(
 		[]stats.Coordinate{
 			{10.0, 9.14},
@@ -63,7 +63,7 @@ func Test_LinRegCoef_2(t *testing.T) {
 
 func Test_LinRegCoef_3(t *testing.T) {
 
-
+	//Test 3 - on third dataset
 	test3, _ := stats.LinReg(
 		[]stats.Coordinate{
 			{10.0, 7.46},
@@ -91,7 +91,7 @@ func Test_LinRegCoef_3(t *testing.T) {
 
 func Test_LinRegCoef_4(t *testing.T) {
 
-
+	//Test 4 - on fourth dataset
 	test4, _ := stats.LinReg(
 		[]stats.Coordinate{
 			{8.0, 6.58},
