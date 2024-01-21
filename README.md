@@ -6,7 +6,7 @@ This project was created for the Week 3 assignment in MSDS 431, titled Testing G
 
 ### func roundFloat
 
-I was surprised to learn that neither the Go or the math library had a function that could round to precise decimal places, only functions that rounded to the nearest integer. roundFloat is a function that I found at https://gosamples.dev/round-float/ that fills this need until Go or math add a similar function.
+I was surprised to learn that neither the Go or the math library had a function that could round to precise decimal places, only functions that rounded to the nearest integer. roundFloat is a function that I found at https://gosamples.dev/round-float/ that fills this need until Go or math add a similar function. It accepts a float64 and a uint as arguments, and rounds the float64 to uint decimal places.
 
 ### func LinRegCoef
 
