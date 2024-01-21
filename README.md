@@ -18,15 +18,15 @@ In my testing, the Go stats library produced identical linear regression coeffic
 
 For the first Anscombe dataset, Python produced 0.5001 as the linear regression coefficient - screenshot below, circled in yellow:
 ![Python Results](python-results-1.png "Python Results") \
-\
+
 
 Likewise, R produced the same exact linear regression coefficient of 0.5001 for dataset 1:
 ![R Results](r-results-1.png "R Results") \
-\
+
 
 Go was able to produce the exact same linear regression coefficient of 0.5001 for dataset 1:
 ![Go Results](go-results-1.png "Go Results") \
-\
+
 
 ### Python/R vs. Go: Performance
 
@@ -50,7 +50,7 @@ Although the provided Python and R programs are calculating more test statistics
 
 anscombe_test.go contains 4 testing functions for LinRegCoef, and 1 testing function for roundFloat. Both of these functions pass each test that was run, and completing all tests took in total 0.129s. 
 ![Go Test Results](go-test-results.png "Go Test Results")\
-\
+
 
 ## Recommendation to management
 
